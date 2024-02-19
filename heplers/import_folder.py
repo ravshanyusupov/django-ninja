@@ -11,7 +11,7 @@ def import_from_folder(folder):
                 path = Path(root) / f
                 path_name = path.with_suffix("").as_posix().replace("/", ".")
                 module_name = importlib.import_module(path_name)
-                modules.append({"path_name": path.with_suffix("").as_posix(), "handler": module_name})
+                modules.append({"path_name": path.with_suffix("").as_posix(), "module_name": module_name})
     return modules
 
 
