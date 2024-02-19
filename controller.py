@@ -8,14 +8,27 @@ def generate_api(api):
     for module in modules:
         endpoint_instance = module['path_name']
         handler_instance = module['handler']
-
         if endpoint_instance.split('/')[-1] == 'create':
-            api.post(endpoint_instance, tags='user')(handler_instance.handler)
+            api.post(
+                endpoint_instance,
+                tags=endpoint_instance.split('/')[2:3]
+            )(handler_instance.handler)
         elif endpoint_instance.split('/')[-1] == 'get' or endpoint_instance.split('/')[-1] == 'list':
-            api.get(endpoint_instance)(handler_instance.handler)
+            api.get(
+                endpoint_instance,
+                tags=endpoint_instance.split('/')[2:3]
+              )(handler_instance.handler)
         elif endpoint_instance.split('/')[-1] == 'put' or endpoint_instance.split('/')[-1] == 'update':
-            api.put(endpoint_instance)(handler_instance.handler)
+            api.put(
+                endpoint_instance,
+                tags=endpoint_instance.split('/')[2:3]
+            )(handler_instance.handler)
         elif endpoint_instance.split('/')[-1] == 'patch':
-            api.patch(endpoint_instance)(handler_instance.handler)
+            api.patch(
+                endpoint_instance,
+                tags=endpoint_instance.split('/')[2:3]
+            )(handler_instance.handler)
         elif endpoint_instance.split('/')[-1] == 'delete':
-            api.delete(endpoint_instance)(handler_instance.handler)
+            api.delete(
+                endpoint_instance, tags=endpoint_instance.split('/')[2:3]
+            )(handler_instance.handler)
