@@ -14,7 +14,7 @@ class TimeStampedModel(models.Model):
 class Todo(TimeStampedModel):
     title = models.CharField(max_length=255)
     image = models.ImageField(null=True)
-    deadline = models.DateTimeField(default=datetime.now())
+    deadline = models.DateTimeField(null=False)
     body = models.TextField()
     is_completed = models.BooleanField(default=False)
     state = models.IntegerField(default=1)

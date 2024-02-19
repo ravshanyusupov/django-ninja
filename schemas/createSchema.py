@@ -1,22 +1,25 @@
+
+from typing import Optional
+
 from ninja import Schema
 from ninja import ModelSchema
-from datetime import date
+from datetime import date, datetime
 from todo.models import Todo
 
 
 class responseSchema(ModelSchema):
     status: int = 201
     message: str = 'created'
-    timestamp: date = date.today()
+    timestamp: date
 
     class Meta:
         model = Todo
-        fields = ["id", "title", "deadline", "body", "is_completed", "state"]
+        fields = ["id", "deadline", "is_completed", "state"]
 
 
 class createSchema(Schema):
     title: str
-    deadline: date = date.today()
+    deadline: date = datetime.now()
     body: str
     is_completed: bool = False
 

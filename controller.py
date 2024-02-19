@@ -12,7 +12,7 @@ def generate_api(api):
             api.post(
                 endpoint_instance,
                 tags=endpoint_instance.split('/')[2:3],
-                response=handler_instance.response
+                #response=handler_instance.response
             )(handler_instance.handler)
         elif endpoint_instance.split('/')[-1] == 'get' or endpoint_instance.split('/')[-1] == 'list':
             api.get(
